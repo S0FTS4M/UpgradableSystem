@@ -84,7 +84,7 @@ namespace Forge.Models.Upgradables
 
         public float BaseCost => _baseCost;
 
-        public double UpgradeCost => Verfices.Request<GameContainer>().CurrStageIndex == 0 ? _upgradeCost : Verfices.Request<GameContainer>().CurrStageIndex * Verfices.Request<GameContainer>().CostMultiplier * _upgradeCost;
+        public double UpgradeCost =>  _upgradeCost;
 
         public int MaxLevel { get; set; }
 
@@ -139,6 +139,7 @@ namespace Forge.Models.Upgradables
             if(Container == null)
             {
                 Debug.LogError("how did this happen?");
+                return;
             }
             _upgradeConstraint = new MainCurrencyConstraint(this, Container.Currency);
 
